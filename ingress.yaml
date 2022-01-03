@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: polnilnice-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /frontend(/|$)(.*)
+            backend:
+              serviceName: frontend
+              servicePort: 80
+          - path: /uporabniki(/|$)(.*)
+            backend:
+              serviceName: uporabniki
+              servicePort: 8080
+          - path: /polnilnice(/|$)(.*)
+            backend:
+              serviceName: polnilnice
+              servicePort: 8080
+          - path: /novice(/|$)(.*)
+            backend:
+              serviceName: novice
+              servicePort: 8080
+          - path: /iskanje(/|$)(.*)
+            backend:
+              serviceName: iskanje
+              servicePort: 8080
+          - path: /admin(/|$)(.*)
+            backend:
+              serviceName: admin
+              servicePort: 8080
+          - path: /placila(/|$)(.*)
+            backend:
+              serviceName: placila
+              servicePort: 8080
+          - path: /consul(/|$)(.*)
+            backend:
+              serviceName: consul
+              servicePort: 8500
