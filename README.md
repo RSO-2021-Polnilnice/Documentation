@@ -123,7 +123,7 @@ Make sure to select the right tag for the image to be used.
 
 
 
-### Admin microservice
+## Admin microservice
 
 ### Prerequisites
 
